@@ -12,10 +12,10 @@ export const dbConnection = () => {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => {
-    console.log('Connected to database!');
-  })
-  .catch((err) => {
-    console.log(`Some error occurred while connecting to the database: ${err}`);
-  });
+    .then(() => {
+      console.log('Connected to database!');
+    })
+    .catch((err) => {
+      console.log(`Some error occurred while connecting to the database: ${err}`);
+    });
 };
