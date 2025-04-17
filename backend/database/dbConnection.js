@@ -1,21 +1,23 @@
 // backend/database/dbConnection.js
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-dotenv.config({ path: './config.env' });
+dotenv.config();
 
-console.log('MONGO_URI:', process.env.MONGO_URI); // Debugging line
+console.log("MONGODB_URI:", process.env.MONGODB_URI); // Debugging line
 
-export const dbConnection = () => {
-  mongoose.connect(process.env.MONGO_URI, {
-    dbName: 'fooddata',
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+const dbConnection = () => {
+  mongoose
+    .connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
     .then(() => {
-      console.log('Connected to database!');
+      console.log("Database connected successfully");
     })
     .catch((err) => {
-      console.log(`Some error occurred while connecting to the database: ${err}`);
+      console.log("Some error occurred while connecting to the database:", err);
     });
 };
+
+export default dbConnection;
